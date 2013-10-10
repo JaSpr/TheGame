@@ -1,0 +1,59 @@
+<?php $this->headScript()->captureStart(); ?>
+var baseUrl = "<?php echo $this->baseUrl(); ?>";
+<?php $this->headScript()->captureEnd(); ?>
+<?php
+
+$this->headTitle()
+    ->setSeparator(' - ')
+    ->prepend('Facepalm');
+
+$this->headMeta()
+     ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+     ->appendHttpEquiv("Content-Type", "text/html; charset=" . $this->getEncoding());
+
+$this->headLink()
+    ->prependStylesheet("{$this->baseUrl()}/styles/bootstrap-responsive.css")
+    ->prependStylesheet("{$this->baseUrl()}/styles/global.css","all")
+    ->prependStylesheet("{$this->baseUrl()}/styles/bootstrap.css","all");
+
+$this->headScript()
+    ->prependFile("//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js")
+    ->appendFile("{$this->baseUrl()}/js/bootstrap.min.js")
+    ->appendFile("{$this->baseUrl()}/js/global.js");
+
+echo $this->doctype();
+?>
+
+<html>
+    <head>
+        <?php echo $this->headTitle(); ?>
+
+        <?php echo $this->headMeta(); ?>
+
+        <?php echo $this->headLink(); ?>
+
+        <?php echo $this->headStyle(); ?>
+
+        <?php echo $this->headScript(); ?>
+    </head>
+    <body>
+        <form enctype="application/x-www-form-urlencoded"
+              action="<?php echo $this->escape($this->form->getAction()); ?>"
+              method="<?php echo $this->escape($this->form->getMethod()); ?>"
+              class="new-point-form navbar-inner offset5 span4">
+
+            <h2>Login</h2>
+
+            <p>Login to your account below:</p>
+
+            <hr>
+
+            <fieldset class="span3 hero-unit">
+                <?php echo $this->form->email; ?>
+                <?php echo $this->form->password; ?>
+                <?php echo $this->form->login; ?>
+            </fieldset>
+
+        </form>
+    </body>
+</html>

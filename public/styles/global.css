@@ -1,0 +1,126 @@
+/* GLOBAL STYLES */
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.reset {
+    margin: 0;
+    padding: 0;
+}
+span.full-name {
+    white-space: nowrap;
+}
+
+/* NAVIGATION STYLES */
+.brand {
+    border-right: thin solid #333;
+}
+
+/* SIDEBAR STYLES */
+.sidebar-nav {
+    padding: 9px 0;
+}
+.sidebar-nav > hr {
+    margin-bottom: 10px;
+}
+.leader-board, .notifications {
+    margin: 10px;
+}
+.leader-board .table-hover tbody tr:hover td,
+.leader-board .table-hover tbody tr:hover th {
+    background-color: #eee;
+}
+
+/* POINT/COMMENT STYLES */
+.avatar {
+    width: 67px;
+    height: 60px;
+    border: thin solid #ccc;
+    float: left;
+    margin-right: 10px;
+}
+.likes {
+    display: inline-block;
+    margin-left: 15px;
+}
+.likes a {
+    text-decoration: none;
+    opacity: 0.75;
+}
+.likes a:hover, .likes a.liked {
+    opacity: 1.00;
+}
+.author-name a {
+    color: #333;
+}
+.author-name a:hover {
+    color: #005580;
+}
+.count {
+    font-size: 11px;
+    background-color: #F7F7F9;
+    border: 1px solid #E1E1E8;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 2px 4px;
+    margin-right: 5px;
+    cursor: default;
+}
+.comments-wrap {
+    position: relative;
+}
+.comment-text {
+    margin-top: 5px;
+}
+.comment-textbox {
+    width: 98%;
+}
+#point_id-label, #submit-label {
+    display: none;
+}
+.loading {
+    opacity: 0.25;
+}
+.spinner {
+    background: url('../images/ajax-loader.gif') no-repeat 50% 40%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.date {
+    font-size: 11px;
+}
+
+/* FORM STYLES */
+.new-point-form {
+    padding: 20px;
+}
+.new-point-form .span3, .new-point-form .span11 {
+    padding: 20px 10px 48px;
+    border: thin solid #CCC;
+}
+.new-point-form .span3 select {
+    width: 100%;
+}
+.new-point-form .span8 textarea,
+.new-point-form .span8 #winning_statement {
+    width: 97%
+}
+.new-point-form .span8 .span6 input[type="text"] {
+    width: 94%;
+}
+.point-explanation {
+    white-space: pre-wrap;
+}
+.point-explanation > small {
+    white-space: normal;
+}
+
+/* USER VIEW STYLES */
+.user-info .user-score > span {
+    margin-left: 20px;
+}
+.point .hidden {
+    display: none;
+}

@@ -1,0 +1,67 @@
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <div class="user-data">
+                    <div class="user-stats">
+                        <ul class="nav nav-list">
+                            <li class="nav-header">User Details</li>
+                            <li class="user-name">
+                                <?php echo $this->escape($this->currentUser->name); ?> (<?php echo $this->escape($this->currentUser->username); ?>)
+                            </li>
+                            <li class="user-score">
+                                Score: <?php echo $this->userScore($this->currentUser); ?>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="home-menu">
+                        <ul class="nav nav-list">
+                            <li class="nav-header">MENU</li>
+                            <li><a href="/">Home Screen</a></li>
+                            <li><a href="/points/new">Award Point</a></li>
+                            <li><a class="tab-link" href="/#received">Latest Points Received</a></li>
+                            <li><a class="tab-link" href="/#given">Latest Points Given</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <?php if(count($this->notifications)): ?>
+
+                    <hr>
+
+                    <p class="nav-header">Notifications</p>
+
+                    <div class="notifications">
+                        <ul class="unstyled">
+                            <?php foreach($this->notifications as $notification): ?>
+                            <li><a href="<?php echo $this->notificationUrl($notification); ?>"><?php echo $this->escape($notification->text); ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+
+                <?php endif; ?>
+
+                <hr>
+
+                <p class="nav-header">Leader Board</p>
+
+                <div class="leader-board">
+
+                    <table class="table table-hover table-condensed">
+                        <thead>
+                        <th>#</th>
+                        <th>User</th>
+                        <th>Score</th>
+                        </thead>
+
+                        <?php foreach($this->sortedUsers as $i => $user): ?>
+                        <tr>
+                            <td><?php echo $i+1 ?></td>
+                            <td><a href="<?php echo $this->userProfileUrl($user) ?>"><?php echo $this->escape($user->username) ?></a></td>
+                            <td><?php echo $this->userScore($user); ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>

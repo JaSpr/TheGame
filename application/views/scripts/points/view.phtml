@@ -1,0 +1,41 @@
+<div class="hero-unit">
+    <h3>
+        <a href="<?php echo $this->userProfileUrl($this->point->getWitness()); ?>">
+            <span class="full-name"><?php echo $this->escape($this->point->getWitness()->name); ?></span></a>
+        witnessed a
+
+        <?php echo $this->pointType($this->point); ?>
+
+        <a href="<?php echo $this->userProfileUrl($this->point->getRecipient()); ?>">
+            <span class="full-name"><?php echo $this->escape($this->point->getRecipient()->name); ?></span></a>
+        event:
+
+    </h3>
+
+
+
+    <p>
+        on <?php echo $this->point->getEventDateString(); ?>
+            <?php echo $this->pointStatus($this->point); ?>
+            <?php echo $this->approvalButton($this->point, $this->currentUser); ?>
+
+    </p>
+
+    <hr />
+
+    <blockquote class="point-explanation"><?php echo $this->escape($this->point->explanation); ?>
+        <small>entered by
+            <a href="<?php echo $this->userProfileUrl($this->point->getAuthor()); ?>">
+                <span class="full-name"><?php echo $this->escape($this->point->getAuthor()->name); ?></span></a>
+            on <?php echo $this->point->getCreatedDateString(); ?>
+        </small>
+    </blockquote>
+
+</div>
+    <div class="point-details">
+
+    </div>
+
+<hr />
+
+<?php echo $this->partial('partials/comments.phtml', $this); ?>

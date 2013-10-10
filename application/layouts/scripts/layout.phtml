@@ -1,0 +1,59 @@
+<?php $this->headScript()->captureStart(); ?>
+var baseUrl = "<?php echo $this->baseUrl(); ?>";
+<?php $this->headScript()->captureEnd(); ?>
+<?php
+
+$this->headTitle()
+     ->setSeparator(' - ')
+     ->prepend('game.jaspr.net');
+
+$this->headMeta()
+     ->appendHttpEquiv("Content-Type", "text/html; charset=" . $this->getEncoding())
+     ->appendName('viewport', 'width=device-width, initial-scale=1.0');
+
+$this->headLink()
+     ->prependStylesheet("{$this->baseUrl()}/styles/bootstrap-responsive.css")
+     ->prependStylesheet("{$this->baseUrl()}/styles/global.css","all")
+     ->prependStylesheet("{$this->baseUrl()}/styles/bootstrap.css","all")
+     ->prependStylesheet("{$this->baseUrl()}/styles/jquery-ui-1.9.2.custom.min.css","all");
+
+$this->headScript()
+     ->prependFile("//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js")
+     ->appendFile("{$this->baseUrl()}/js/jquery-ui-1.9.2.custom.min.js")
+     ->appendFile("{$this->baseUrl()}/js/bootstrap.min.js")
+     ->appendFile("{$this->baseUrl()}/js/global.js");
+
+echo $this->doctype();
+?>
+<html>
+    <head>
+
+<?php echo $this->headTitle(); ?>
+
+<?php echo $this->headMeta(); ?>
+
+<?php echo $this->headLink(); ?>
+
+<?php echo $this->headStyle(); ?>
+
+<?php echo $this->headScript(); ?>
+
+    </head>
+    <body>
+        <?php echo $this->flashMessages(); ?>
+
+        <?php echo $this->render('_header.phtml');?>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+
+                <div class="span9">
+                    <?php echo $this->layout()->content; ?>
+                </div>
+
+                <?php echo $this->render('_sidebar.phtml');?>
+
+            </div>
+        </div>
+    </body>
+</html>

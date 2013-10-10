@@ -1,0 +1,178 @@
+<div class="points-overview">
+
+    <h3>All Points</h3>
+
+    <ul class="nav nav-tabs point-tabs">
+        <li><a href="#all" data-toggle="tab">All</a></li>
+        <li><a href="#approved" data-toggle="tab">Approved</a></li>
+        <li><a href="#unapproved" data-toggle="tab">Unapproved</a></li>
+        <li><a href="#contested" data-toggle="tab">Contested</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="all" class="points tab-pane">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <th>#</th>
+                <th>+/-</th>
+                <th>Date</th>
+                <th>User</th>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Status</th>
+                </thead>
+
+                <?php foreach($this->points as $i => $point) : ?>
+
+                <tr class="<?php echo ($point->isContested()) ? 'error' : ''; ?>">
+                    <td><?php echo $i+1; ?></td>
+                    <td class="<?php echo $point->isPositive() ? 'text-success' : 'text-error' ; ?>">
+                        <b><?php echo $point->isPositive() ? '+1' : '-1' ; ?></b>
+                    </td>
+                    <td><?php echo $point->getEventDateString(); ?></td>
+                    <td>
+                        <a href="<?php echo $this->userProfileUrl($point->getRecipient()); ?>">
+                            <span class="full-name"><?php echo $this->escape($point->getRecipient()->name); ?></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="<?php echo $this->pointViewUrl($point) ?>">
+                            <?php echo $this->escape($point->winning_statement); ?>
+                        </a>
+                    </td>
+                    <td><?php echo $this->escape($point->location); ?></td>
+                    <td>
+                        <?php echo $point->isApproved() ? '<i class="icon-ok" title="Approved"></i>' : ''; ?>
+                        <?php echo ($point->isContested()) ? '<i class="icon-warning-sign" title="Contested"></i>' : ''; ?>
+                    </td>
+                </tr>
+
+                <?php endforeach; ?>
+            </table>
+        </div>
+
+        <div id="approved" class="points tab-pane">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <th>#</th>
+                <th>+/-</th>
+                <th>Date</th>
+                <th>User</th>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Status</th>
+                </thead>
+
+                <?php foreach($this->approved as $i => $point) : ?>
+
+                <tr class="<?php echo ($point->isContested()) ? 'error' : ''; ?>">
+                    <td><?php echo $i+1; ?></td>
+                    <td class="<?php echo $point->isPositive() ? 'text-success' : 'text-error' ; ?>">
+                        <b><?php echo $point->isPositive() ? '+1' : '-1' ; ?></b>
+                    </td>
+                    <td><?php echo $point->getEventDateString(); ?></td>
+                    <td>
+                        <a href="<?php echo $this->userProfileUrl($point->getRecipient()); ?>">
+                            <span class="full-name"><?php echo $this->escape($point->getRecipient()->name); ?></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="<?php echo $this->pointViewUrl($point) ?>">
+                            <?php echo $this->escape($point->winning_statement); ?>
+                        </a>
+                    </td>
+                    <td><?php echo $this->escape($point->location); ?></td>
+                    <td>
+                        <?php echo $point->isApproved() ? '<i class="icon-ok" title="Approved"></i>' : ''; ?>
+                        <?php echo ($point->isContested()) ? '<i class="icon-warning-sign" title="Contested"></i>' : ''; ?>
+                    </td>
+                </tr>
+
+                <?php endforeach; ?>
+            </table>
+        </div>
+
+        <div id="unapproved" class="points tab-pane">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <th>#</th>
+                <th>+/-</th>
+                <th>Date</th>
+                <th>User</th>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Status</th>
+                </thead>
+
+                <?php foreach($this->unapproved as $i => $point) : ?>
+
+                <tr class="<?php echo ($point->isContested()) ? 'error' : ''; ?>">
+                    <td><?php echo $i+1; ?></td>
+                    <td class="<?php echo $point->isPositive() ? 'text-success' : 'text-error' ; ?>">
+                        <b><?php echo $point->isPositive() ? '+1' : '-1' ; ?></b>
+                    </td>
+                    <td><?php echo $point->getEventDateString(); ?></td>
+                    <td>
+                        <a href="<?php echo $this->userProfileUrl($point->getRecipient()); ?>">
+                            <span class="full-name"><?php echo $this->escape($point->getRecipient()->name); ?></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="<?php echo $this->pointViewUrl($point) ?>">
+                            <?php echo $this->escape($point->winning_statement); ?>
+                        </a>
+                    </td>
+                    <td><?php echo $this->escape($point->location); ?></td>
+                    <td>
+                        <?php echo $point->isApproved() ? '<i class="icon-ok" title="Approved"></i>' : ''; ?>
+                        <?php echo ($point->isContested()) ? '<i class="icon-warning-sign" title="Contested"></i>' : ''; ?>
+                    </td>
+                </tr>
+
+                <?php endforeach; ?>
+            </table>
+        </div>
+
+        <div id="contested" class="points tab-pane">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <th>#</th>
+                <th>+/-</th>
+                <th>Date</th>
+                <th>User</th>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Status</th>
+                </thead>
+
+                <?php foreach($this->contested as $i => $point) : ?>
+
+                <tr class="<?php echo ($point->isContested()) ? 'error' : ''; ?>">
+                    <td><?php echo $i+1; ?></td>
+                    <td class="<?php echo $point->isPositive() ? 'text-success' : 'text-error' ; ?>">
+                        <b><?php echo $point->isPositive() ? '+1' : '-1' ; ?></b>
+                    </td>
+                    <td><?php echo $point->getEventDateString(); ?></td>
+                    <td>
+                        <a href="<?php echo $this->userProfileUrl($point->getRecipient()); ?>">
+                            <span class="full-name"><?php echo $this->escape($point->getRecipient()->name); ?></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="<?php echo $this->pointViewUrl($point) ?>">
+                            <?php echo $this->escape($point->winning_statement); ?>
+                        </a>
+                    </td>
+                    <td><?php echo $this->escape($point->location); ?></td>
+                    <td>
+                        <?php echo $point->isApproved() ? '<i class="icon-ok" title="Approved"></i>' : ''; ?>
+                        <?php echo ($point->isContested()) ? '<i class="icon-warning-sign" title="Contested"></i>' : ''; ?>
+                    </td>
+                </tr>
+
+                <?php endforeach; ?>
+            </table>
+        </div>
+    </div>
+
+</div>

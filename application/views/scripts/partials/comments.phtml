@@ -1,0 +1,55 @@
+
+<div class="comments-wrap span9">
+    <div class="comments">
+        <?php
+        foreach($this->point->getComments() as $comment) :
+            $this->like = null;
+            ?>
+
+            <div class="comment">
+                <img class="avatar" src="/images/cereal_guy.jpg" />
+
+                <h5 class="reset author-name">
+                    <a href="<?php echo $this->userProfileUrl($comment->getAuthor()); ?>">
+                        <?php echo $comment->getAuthor()->name ?>
+                    </a>
+                </h5>
+                <span class="muted date"><?php echo $comment->getCreatedDateString() ?></span>
+
+                <?php
+                foreach($comment->getLikes() as $like) {
+                    if ($like->author_id === $this->currentUser->id && $like->enabled) {
+                        $this->like = $like->type;
+                    }
+                }
+                ?>
+
+                <div class="likes">
+
+                    <?php if($comment->getLikeScore() === 0): ?>
+                    <span class="count text-success"><?php echo $comment->getLikeScore(); ?></span>
+                    <?php elseif($comment->getLikeScore() > 0): ?>
+                    <span class="count text-success"><?php echo $comment->getLikeScore(); ?></span>
+                    <?php else: ?>
+                    <span class="count text-error"><?php echo $comment->getLikeScore(); ?></span>
+                    <?php endif; ?>
+
+                    <a href="<?php echo $this->url(array('controller'=>'Comments','action'=>'rank','id'=>$comment->id,'type'=>'like')) ?>" class="<?php echo ($this->like == 'like')?'liked':''; ?>">
+                        <i class="icon-thumbs-up"></i>
+                    </a>
+                    <a href="<?php echo $this->url(array('controller'=>'Comments','action'=>'rank','id'=>$comment->id,'type'=>'dislike')) ?>" class="<?php echo ($this->like == 'dislike')?'liked':''; ?>">
+                        <i class="icon-thumbs-down"></i>
+                    </a>
+                </div>
+
+                <p class="comment-text"><?php echo $this->escape($comment->text); ?></p>
+
+                <hr>
+            </div>
+
+
+            <?php endforeach; ?>
+
+        <?php echo $this->form; ?>
+    </div>
+</div>

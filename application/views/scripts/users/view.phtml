@@ -1,0 +1,50 @@
+<div class="hero-unit user-info">
+    <h2><?php echo $this->escape($this->user->name); ?> (<?php echo $this->escape($this->user->username); ?>)</h2>
+    <p class="user-score">
+        <strong>Score: <?php echo $this->user->getScore(); ?></strong>
+        <span class="text-success">Badass: <?php echo ($this->user->getScoreOffsets()->pos > 0) ? "+" . $this->user->getScoreOffsets()->pos : 0; ?></span>
+        <span class="text-error">Dumbass: <?php echo $this->user->getScoreOffsets()->neg; ?></span>
+    </p>
+</div>
+
+<ul class="nav nav-tabs point-filters">
+    <li><a href="#all" filter="all" data-toggle="tab">All</a></li>
+    <li><a href="#given" filter="given" data-toggle="tab">Given</a></li>
+    <li><a href="#received" filter="received" data-toggle="tab">Received</a></li>
+</ul>
+
+<div class="row-fluid">
+
+    <?php foreach ($this->user->getAssociatedPoints() as $count => $point): ?>
+    <?php if ($count !== 0 && $count % 3 === 0): ?>
+<div class="row-fluid">
+    <?php endif;?>
+
+    <div class="span4 point<?php echo ($this->user->id === $point->getRecipient()->id) ? ' received' : ' given' ; ?>">
+        <h4>
+            <a href="<?php echo $this->userProfileUrl($point->getWitness()); ?>">
+                <span class="full-name"><?php echo $this->escape($point->getWitness()->name); ?></span></a>
+            witnessed a<br/>
+
+            <?php echo $this->pointType($point); ?>
+
+            <a href="<?php echo $this->userProfileUrl($point->getRecipient()); ?>">
+                <span class="full-name"><?php echo $this->escape($point->getRecipient()->name); ?></span></a>
+            event:
+        </h4>
+
+        <p>
+            on <?php echo $point->getEventDateString(); ?>
+            <?php echo $this->pointStatus($point); ?>
+        </p>
+        <p class="point-explanation"><?php echo $this->escape($point->explanation); ?></p>
+        <p><a class="btn" href="<?php echo $this->pointViewUrl($point); ?>">View details »</a></p>
+    </div>
+
+    <?php if ($count % 3 === 2 && $this->user->getAssociatedPoints()->count() !== $count): ?>
+</div>
+    <?php endif;?>
+
+    <?php endforeach; ?>
+
+</div>

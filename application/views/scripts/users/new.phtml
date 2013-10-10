@@ -1,0 +1,21 @@
+<form enctype="application/x-www-form-urlencoded"
+      action="<?php echo $this->escape($this->form->getAction()); ?>"
+      method="<?php echo $this->escape($this->form->getMethod()); ?>"
+      class="new-point-form navbar-inner offset3 span6">
+
+    <h2>New User</h2>
+
+    <p>Create new user account below:</p>
+
+    <hr>
+
+    <fieldset class="span11 hero-unit">
+        <?php echo $this->form->email; ?>
+        <?php echo $this->form->name; ?>
+        <?php echo $this->form->username; ?>
+        <?php echo $this->form->password; ?>
+        <?php echo $this->form->confirmPassword; ?>
+        <?php echo $this->form->submit; ?>
+    </fieldset>
+
+</form>

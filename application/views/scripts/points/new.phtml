@@ -1,0 +1,34 @@
+
+<form enctype="application/x-www-form-urlencoded"
+      action="<?php echo $this->escape($this->form->getAction()); ?>"
+      method="<?php echo $this->escape($this->form->getMethod()); ?>"
+      class="new-point-form navbar-inner offset1">
+
+    <h2>Award a New Point</h2>
+
+    <p>Award a user a new point below. Fill out the form below with:</p>
+
+    <ol>
+        <li>the user's information</li>
+        <li>point type</li>
+        <li>the event information</li>
+    </ol>
+
+    <hr>
+
+    <fieldset class="span3 hero-unit">
+        <?php echo $this->form->recipient_id; ?>
+        <?php echo $this->form->point_type; ?>
+        <?php echo $this->form->witness_id; ?>
+    </fieldset>
+
+    <fieldset class="span8">
+        <div class="span6"><?php echo $this->form->location; ?></div>
+        <div class="span6"><?php echo $this->form->event_date; ?></div>
+
+        <?php echo $this->form->explanation; ?>
+        <?php echo $this->form->winning_statement; ?>
+        <?php echo $this->form->Submit; ?>
+    </fieldset>
+
+</form>
